@@ -1,6 +1,7 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 // const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -14,7 +15,8 @@ const optimization = () => {
   }
 
   if (isProd) {
-    config.minimize = true
+    config.minimize = true,
+    config.minimizer = [new TerserPlugin()]
   }
 
   return config

@@ -1,0 +1,42 @@
+import React from "react"
+
+export type CanvasProps = React.DetailedHTMLProps<
+  React.CanvasHTMLAttributes<HTMLCanvasElement>,
+  HTMLCanvasElement
+>
+
+export interface IAnimation {
+  update: (params: IAnimationParams) => void,
+  render: (context: CanvasRenderingContext2D) => void,
+  isRun: boolean,
+  fps?: number
+}
+
+export interface IAnimationParams {
+  currentTime: number,
+  prevTime: number,
+  deltaTime: number
+}
+
+export interface ICircle {
+  posX: number,
+  posY: number,
+  radius: number,
+  waveSize: number,
+  numberOfWaves: number,
+  startAngle: number,
+  offsetAngle: number,
+  width: number,
+  color: string
+}
+
+export interface IRgb {
+  r: number,
+  g: number,
+  b: number
+}
+
+export interface IPointProps {
+  color: string,
+  position: number
+}
