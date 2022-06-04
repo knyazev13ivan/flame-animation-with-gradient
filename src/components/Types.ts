@@ -1,3 +1,4 @@
+import { PayloadAction } from "@reduxjs/toolkit"
 import React from "react"
 
 export type CanvasProps = React.DetailedHTMLProps<
@@ -37,6 +38,13 @@ export interface IRgb {
 }
 
 export interface IPointProps {
+  id: string,
   color: string,
   position: number
 }
+
+export interface IPointsState {
+  points: Array<IPointProps>
+}
+
+export type IPayloadPoint = PayloadAction<IPointProps>

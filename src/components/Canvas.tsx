@@ -17,16 +17,12 @@ const Canvas: React.FC<CanvasProps & { animation: IAnimation }> = ({ animation, 
 
     return () => window.cancelAnimationFrame(requestID)
 
-  }, []);
+  }, [animation.isRun]);
 
   useEffect(() => {
     if (animation.isRun) {
-      console.log('run ', requestID);
-      
       requestID = requestAnimationFrame((stampTime: number) => animate(stampTime))
     } else {
-      console.log('stop ', requestID);
-      
       window.cancelAnimationFrame(requestID)
     }
   }, [animation.isRun])

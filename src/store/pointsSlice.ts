@@ -1,31 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-export interface IPoint {
-  position: number,
-  color: string
-}
-
-export interface IPointsState {
-  points: Array<IPoint>
-}
+import { IPointProps, IPointsState } from '../components/Types'
 
 const initialState: IPointsState = {
   points: [
     {
+      id: ':r0:',
+      color: '#a435f0',
       position: 0,
-      color: '#902020'
     },
     {
-      position: 20,
-      color: '#e06db7'
+      id: ':r1:',
+      color: '#4e89fd',
+      position: 40,
     },
     {
-      position: 70,
-      color: '#eb8a86'
+      id: ':r2:',
+      color: '#ff1154',
+      position: 150,
     },
     {
-      position: 100,
-      color: '#903cd'
+      id: ':r3:',
+      color: '#efd300',
+      position: 220,
     },
   ]
 }
@@ -34,12 +30,21 @@ export const pointsSlice = createSlice({
   name: 'points',
   initialState,
   reducers: {
-    setPosition: (state, action: PayloadAction<number>) => {
-      state.points[1].position = action.payload
+    setPosition: (state, {payload}: PayloadAction<IPointProps>) => {
+      const indexPoint = state.points.findIndex(e => e.id === payload.id)
+      state.points[indexPoint].position = payload.position
     },
-    setColor: (state, action: PayloadAction<string>) => {
-      state.points[1].color = action.payload
+    setColor: (state, {payload}: PayloadAction<IPointProps>) => {
+      const indexPoint = state.points.findIndex(e => e.id === payload.id)
+      state.points[indexPoint].color = payload.color
     },
+    addPoint: (state, {payload}: PayloadAction<IPointProps>) => {
+      state.points.push({
+        id: payload.id,
+        color: payload.color,
+        position: payload.position
+      })
+    }
   },
 })
 

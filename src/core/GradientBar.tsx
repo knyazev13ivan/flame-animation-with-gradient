@@ -1,33 +1,38 @@
-import React, { useEffect, useRef, useState } from 'react'
+//@ts-nocheck
+import React, { useEffect, useId, useRef, useState } from 'react'
 import Canvas from '../components/Canvas'
 import Point from '../components/Point'
 import { IAnimation } from '../components/Types'
 import clearCanvas from '../utils/clearCanvas'
 import '../styles/gradientBar.scss'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { setColor } from '../store/pointsSlice'
 
 function GradientBar() {
   const containerRef = useRef<HTMLDivElement | null>(null)
-
   const [width, setWidth] = useState<number | undefined>(0)
   const [height, setHeight] = useState<number | undefined>(0)
+
+  const dispatch = useAppDispatch()
+  const points = useAppSelector(state => state.points.points)
 
   useEffect(() => {
     setWidth(containerRef.current?.offsetWidth)
     setHeight(containerRef.current?.offsetHeight)
   }, [])
 
-  const initColor0 = '#a435f0'
-  const initColor1 = '#4e89fd'
-  const initColor2 = '#ff1154'
-  const initColor3 = '#efd300'
+  const handleOnChange = (e: Event, id): void => {
+    dispatch(setColor({ id, color: e.target.value }))
+  }
 
   const animation: IAnimation = {
-    isRun: true,
+    // isRun: true,
+    isRun: false,
 
     update() {
-      // console.log('render!');
+      console.log('render!');
     },
-    
+
     render(ctx) {
       clearCanvas(ctx)
 
@@ -35,6 +40,7 @@ function GradientBar() {
       ctx.fillRect(20, 2, 8, 8)
     }
   }
+  console.log('render GradientBar!');
 
   return (
     <div ref={containerRef} className='gradient-bar'>
@@ -43,10 +49,23 @@ function GradientBar() {
         animation={animation}
         width={width}
         height={height} />
-      <Point color={initColor0} position={100} />
-      <Point color={initColor1} position={200} />
-      <Point color={initColor2} position={300} />
-      <Point color={initColor3} position={400} />
+
+      <div>
+        {points.map(point => {
+          const id = useId()
+
+          return (
+            <Point
+              key={id}
+              id={id}
+              color={point.color}
+              position={point.position}
+              onChange={(e) => handleOnChange(e, id)}
+            />
+          )
+        }
+        )}
+      </div>
     </div>
   )
 }
