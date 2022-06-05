@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import pointsReducer from './pointsSlice'
+import gradientBarReducer from './gradientBarSlice'
+import colorsReducer from './colors'
 
 export const store = configureStore({
   reducer: {
-    points: pointsReducer
+    points: pointsReducer,
+    gradient: gradientBarReducer,
+    colors: colorsReducer,
   },
 })
 

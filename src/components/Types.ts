@@ -48,3 +48,8 @@ export interface IPointsState {
 }
 
 export type IPayloadPoint = PayloadAction<IPointProps>
+
+export interface IColors {
+  colors:Array<string>,
+  size: number
+}

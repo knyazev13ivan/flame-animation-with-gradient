@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { CanvasProps, IAnimation, IAnimationParams } from './Types';
 
-const Canvas: React.FC<CanvasProps & { animation: IAnimation }> = ({ animation, ...props }) => {
+const Canvas: React.FC<CanvasProps & { animation: IAnimation, run: boolean}> = ({ animation, ...props }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const canvasCtxRef = useRef<CanvasRenderingContext2D | null>(null);
   let requestID = 0

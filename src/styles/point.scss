@@ -19,7 +19,7 @@
     width: 20px;
     height: 20px;
 
-    border-width: 0.3em;
+    border-width: 0.35em;
     border-style: solid;
     border-radius: 50%;
     border-color: #902020;
@@ -58,5 +58,6 @@
     border-radius: 3px;
 
     cursor: pointer;
+    touch-action: none;
   }
 }

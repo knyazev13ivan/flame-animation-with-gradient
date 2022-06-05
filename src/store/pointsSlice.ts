@@ -5,13 +5,13 @@ const initialState: IPointsState = {
   points: [
     {
       id: ':r0:',
-      color: '#a435f0',
+      color: '#4e89fd',
       position: 0,
     },
     {
       id: ':r1:',
-      color: '#4e89fd',
-      position: 40,
+      color: '#a435f0',
+      position: 60,
     },
     {
       id: ':r2:',
@@ -30,11 +30,14 @@ export const pointsSlice = createSlice({
   name: 'points',
   initialState,
   reducers: {
-    setPosition: (state, {payload}: PayloadAction<IPointProps>) => {
+    changePosition: (state, {payload}: PayloadAction<IPointProps>) => {
       const indexPoint = state.points.findIndex(e => e.id === payload.id)
+      if (payload.position < 0) payload.position = 0
+      if (payload.position > 480) payload.position = 480
+
       state.points[indexPoint].position = payload.position
     },
-    setColor: (state, {payload}: PayloadAction<IPointProps>) => {
+    changeColor: (state, {payload}: PayloadAction<IPointProps>) => {
       const indexPoint = state.points.findIndex(e => e.id === payload.id)
       state.points[indexPoint].color = payload.color
     },
@@ -44,10 +47,13 @@ export const pointsSlice = createSlice({
         color: payload.color,
         position: payload.position
       })
-    }
+    },
+    deletePoint: (state, actions: PayloadAction<string>) => {
+      state.points.filter(point => point.id !== actions.payload)
+    },
   },
 })
 
-export const { setPosition, setColor } = pointsSlice.actions
+export const { changePosition, changeColor, addPoint, deletePoint } = pointsSlice.actions
 
 export default pointsSlice.reducer
