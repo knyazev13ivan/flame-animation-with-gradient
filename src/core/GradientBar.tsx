@@ -15,7 +15,6 @@ function GradientBar() {
   const dispatch = useAppDispatch()
   const points = useAppSelector(state => state.points.points)
   const isRun = useAppSelector(state => state.gradient.isRun)
-  const colorsArr = useAppSelector(state => state.colors.colors)
   const size = useAppSelector(state => state.colors.size)
 
   let currentColors = []
@@ -36,6 +35,7 @@ function GradientBar() {
 
     render(ctx) {
       //отрисовка градиента
+
       const sorted = points.slice().sort((a, b) => a.position - b.position)
 
       for (let i = -1; i < sorted.length; i++) {
@@ -63,9 +63,11 @@ function GradientBar() {
       }
 
       dispatch(setColorsArr(currentColors))
+
       setTimeout(() => dispatch(stop()), 0)
     }
   }
+  // console.log('render GRADIENT', isRun);
 
   return (
     <div ref={containerRef} className='gradient-bar'>

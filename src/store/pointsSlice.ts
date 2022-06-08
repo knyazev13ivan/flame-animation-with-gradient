@@ -32,10 +32,11 @@ export const pointsSlice = createSlice({
   reducers: {
     changePosition: (state, {payload}: PayloadAction<IPointProps>) => {
       const indexPoint = state.points.findIndex(e => e.id === payload.id)
-      if (payload.position < 0) payload.position = 0
-      if (payload.position > 480) payload.position = 480
+      let position = payload.position
+      if (payload.position < 0) position = 0
+      if (payload.position > 480) position = 480
 
-      state.points[indexPoint].position = payload.position
+      state.points[indexPoint].position = position
     },
     changeColor: (state, {payload}: PayloadAction<IPointProps>) => {
       const indexPoint = state.points.findIndex(e => e.id === payload.id)

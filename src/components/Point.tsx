@@ -1,8 +1,8 @@
 //@ts-nocheck
-import React, { ChangeEvent, ComponentPropsWithoutRef } from 'react'
+import React, { ChangeEvent, ComponentPropsWithoutRef, DragEvent } from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { changeColor, changePosition } from '../store/pointsSlice'
 import '../styles/point.scss'
+import { changeColor, changePosition } from '../store/pointsSlice'
 
 const Point: React.FC<ComponentPropsWithoutRef> = ({ id, ...props }) => {
   const dispatch = useAppDispatch()
@@ -14,10 +14,12 @@ const Point: React.FC<ComponentPropsWithoutRef> = ({ id, ...props }) => {
   const handleColorChange = (e: ChangeEvent): void => {
     dispatch(changeColor({ id, color: e.target.value }))
   }
-  const handleDragStart = (e: MouseEvent): void => {
-    dispatch(changePosition({ id: id, position: e.clientX - 10 }))
+
+  const handleDrag = (e: DragEvent): void => {
+    if (e.clientX) dispatch(changePosition({ id: id, position: e.clientX - 10}))
   }
-  const handleDragEnd = (e: Event): void => {
+  
+  const handleDragEnd = (e: DragEvent): void => {
     dispatch(changePosition({ id: id, position: e.clientX - 10 }))
   }
 
@@ -27,14 +29,14 @@ const Point: React.FC<ComponentPropsWithoutRef> = ({ id, ...props }) => {
         <input className='pick-color'
           type="color"
           value={color}
-          onChange={(e) => handleColorChange(e)}
-          />
+          onChange={handleColorChange}
+        />
       </label>
-      <div 
-      className='circle' 
-      draggable={true}
-      onDrag={(e) => handleDragStart(e)}
-      onDragEnd={(e) => handleDragEnd(e)}
+      <div
+        className='circle'
+        draggable={true}
+        onDrag={handleDrag}
+        onDragEnd={handleDragEnd}
       ></div>
       <span>{id}</span>
     </div>
