@@ -62,6 +62,7 @@ function WaveCircles() {
       <Canvas
         className='wave-circle-canvas'
         animation={animation}
+        run={true}
         width={width}
         height={height} />
     </div>

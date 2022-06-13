@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { CanvasProps, IAnimation, IAnimationParams } from './Types';
 
 const Canvas: React.FC<CanvasProps & { animation: IAnimation, run: boolean}> = ({ animation, ...props }) => {
@@ -8,8 +8,6 @@ const Canvas: React.FC<CanvasProps & { animation: IAnimation, run: boolean}> = (
   
   let ctx: CanvasRenderingContext2D
   
-  // console.log('CANVAS rendering');
-  
   useEffect(() => {
     const canvas = canvasRef.current!
     canvasCtxRef.current = canvas!.getContext('2d');
@@ -17,7 +15,7 @@ const Canvas: React.FC<CanvasProps & { animation: IAnimation, run: boolean}> = (
     
     return () => window.cancelAnimationFrame(requestID)
     
-  }, [animation.isRun]);
+  }, [animation.isRun === true]);
   
   useEffect(() => {
     if (animation.isRun) {
@@ -53,7 +51,8 @@ const Canvas: React.FC<CanvasProps & { animation: IAnimation, run: boolean}> = (
   return (
     <canvas ref={canvasRef}
     width={props.width}
-    height={props.height} />
+    height={props.height} 
+    />
     )
   }
   

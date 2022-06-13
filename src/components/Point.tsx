@@ -1,5 +1,5 @@
 //@ts-nocheck
-import React, { ChangeEvent, ComponentPropsWithoutRef, DragEvent } from 'react'
+import React, { ChangeEvent, ComponentPropsWithoutRef, DragEvent, memo } from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import '../styles/point.scss'
 import { changeColor, changePosition } from '../store/pointsSlice'
@@ -38,9 +38,8 @@ const Point: React.FC<ComponentPropsWithoutRef> = ({ id, ...props }) => {
         onDrag={handleDrag}
         onDragEnd={handleDragEnd}
       ></div>
-      <span>{id}</span>
     </div>
   )
 }
 
-export default Point
+export default memo(Point)

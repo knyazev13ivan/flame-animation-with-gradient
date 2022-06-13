@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import Canvas from '../components/Canvas'
 import Point from '../components/Point'
@@ -19,7 +19,7 @@ function GradientBar() {
 
   let currentColors = []
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setWidth(containerRef.current?.offsetWidth)
     setHeight(containerRef.current?.offsetHeight)
   }, [])
@@ -35,7 +35,6 @@ function GradientBar() {
 
     render(ctx) {
       //отрисовка градиента
-
       const sorted = points.slice().sort((a, b) => a.position - b.position)
 
       for (let i = -1; i < sorted.length; i++) {
@@ -67,7 +66,6 @@ function GradientBar() {
       setTimeout(() => dispatch(stop()), 0)
     }
   }
-  // console.log('render GRADIENT', isRun);
 
   return (
     <div ref={containerRef} className='gradient-bar'>
