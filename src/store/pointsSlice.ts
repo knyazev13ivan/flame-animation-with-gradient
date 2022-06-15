@@ -5,23 +5,23 @@ const initialState: IPointsState = {
   points: [
     {
       id: ':r0:',
-      color: '#4e89fd',
+      color: 'rgb(240, 209, 1)',
       position: 0,
     },
     {
       id: ':r1:',
-      color: '#a435f0',
-      position: 60,
+      color: 'rgb(255, 144, 15)',
+      position: 130,
     },
     {
       id: ':r2:',
-      color: '#ff1154',
-      position: 150,
+      color: 'rgb(240, 53, 50)',
+      position: 240,
     },
     {
       id: ':r3:',
-      color: '#efd300',
-      position: 220,
+      color: 'rgb(24, 24, 24)',
+      position: 460,
     },
   ]
 }

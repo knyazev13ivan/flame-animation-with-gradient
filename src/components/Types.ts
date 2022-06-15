@@ -53,3 +53,5 @@ export interface IColors {
   colors:Array<string>,
   size: number
 }
+
+export type FlameMatrix = [Array<Array<number>>, Array<Array<number>>]

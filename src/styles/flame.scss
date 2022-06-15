@@ -1,0 +1,13 @@
+@import "./variables.scss";
+
+.flame-container {
+  position: relative;
+
+  width: 600px;
+  height: 504px;
+  min-height: 504px;
+
+  margin-top: 50px;
+  
+  overflow: hidden; 
+}
