@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks'
 import '../styles/point.scss'
 import { changeColor, changePosition } from '../store/pointsSlice'
 
-const Point: React.FC<ComponentPropsWithoutRef> = ({ id, ...props }) => {
+const Point: React.FC<ComponentPropsWithoutRef> = ({ id, offsetLeft, ...props }) => {
   const dispatch = useAppDispatch()
   const current = useAppSelector(state => state.points.points.find(p => p.id === id))
 
@@ -16,11 +16,11 @@ const Point: React.FC<ComponentPropsWithoutRef> = ({ id, ...props }) => {
   }
 
   const handleDrag = (e: DragEvent): void => {
-    if (e.clientX) dispatch(changePosition({ id: id, position: e.clientX - 10}))
+    if (e.clientX) dispatch(changePosition({ id: id, position: e.clientX - 10 - offsetLeft}))
   }
   
   const handleDragEnd = (e: DragEvent): void => {
-    dispatch(changePosition({ id: id, position: e.clientX - 10 }))
+    dispatch(changePosition({ id: id, position: e.clientX - 10 - offsetLeft}))
   }
 
   return (

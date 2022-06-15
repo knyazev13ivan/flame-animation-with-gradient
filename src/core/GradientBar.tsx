@@ -79,7 +79,7 @@ function GradientBar() {
       <div>
         {points.map(_point => {
           const id = useId()
-          return <Point key={id} id={id} />
+          return <Point key={id} id={id} offsetLeft={containerRef.current?.offsetLeft}/>
         }
         )}
       </div>
