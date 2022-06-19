@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { CanvasProps, IAnimation, IAnimationParams } from './Types';
 
 const Canvas: React.FC<CanvasProps & { animation: IAnimation, run: boolean}> = ({ animation, ...props }) => {

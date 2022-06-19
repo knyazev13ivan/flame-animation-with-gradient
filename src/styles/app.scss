@@ -6,12 +6,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Century Gothic", sans-serif;
+
+  // outline: 1px solid orangered; outline-offset: 1px;
 }
 
 body #root {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   height: 100vh;
@@ -21,4 +23,102 @@ body #root {
 
   background-color: $bg-color;
   color: $text-color;
+
+  a {
+    text-decoration: none;
+
+    color: $lite-red;
+
+    &:visited {
+      color: $lite-red;
+    }
+  }
+
+  h1 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    font-size: 26px;
+  }
+
+  main {
+    display: flex;
+    justify-content: space-around;
+
+    .animation {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gradient-description {
+      width: 350px;
+
+      .color-change {
+        margin-bottom: 20px;
+
+        .example-color {
+          display: inline-block;
+
+          width: 20px;
+          height: 20px;
+
+          border-width: 0.35em;
+          border-style: solid;
+          border-radius: 50%;
+          // border-color: #902020;
+          border-color: $lite-red;
+          border-bottom-right-radius: 0%;
+
+          transform: rotate(45deg);
+        }
+      }
+
+      .position-change {
+        .example-position {
+          display: inline-block;
+
+          width: 0px;
+          margin-left: 2px;
+          margin-top: 7px;
+
+          border-width: 8px;
+          border-bottom-width: 15px;
+          border-style: solid;
+          border-color: transparent;
+          border-bottom-color: #ffffff;
+          border-radius: 3px;
+        }
+      }
+
+    }
+
+    .flame-description {
+      width: 350px;
+
+      p {
+        margin-bottom: 20px;
+
+        strong {
+          color: $lite-red
+        }
+      }
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 600px;
+    height: 50px;
+
+    margin-bottom: 10px;
+
+    .source {
+      margin-left: 10px;
+    }
+  }
 }

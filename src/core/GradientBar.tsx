@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import Canvas from '../components/Canvas'
 import Point from '../components/Point'
@@ -7,7 +7,7 @@ import { run, stop } from '../store/gradientBarSlice'
 import { setColorsArr } from '../store/colors'
 import '../styles/gradientBar.scss'
 
-function GradientBar() {
+const GradientBar: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [width, setWidth] = useState<number | undefined>(480)
   const [height, setHeight] = useState<number | undefined>(15)

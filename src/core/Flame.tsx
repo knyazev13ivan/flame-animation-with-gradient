@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import Canvas from '../components/Canvas'
 import { FlameMatrix, IAnimation } from '../components/Types'
 import { useAppSelector } from '../store/hooks'
@@ -6,7 +6,7 @@ import '../styles/flame.scss'
 import calcStepForFlameMatrix from '../utils/calcStepForFlameMatrix'
 import clearCanvas from '../utils/clearCanvas'
 
-function Flame() {
+const Flame: React.FC = () => {
   const flameContainerRef = useRef<HTMLDivElement | null>(null)
   const [width, setWidth] = useState<number>(600)
   const [height, setHeight] = useState<number>(504)

@@ -1,0 +1,27 @@
+@import "../styles/variables.scss";
+
+.contacts {
+  display: flex;
+  flex-direction: row;
+
+  a {
+    display: inline-block;
+    position: relative;
+
+    width: 50px;
+    height: 50px;
+    
+    &:hover {
+      svg {
+        transition: margin 0.8s;
+        bottom: 7px;
+        fill: $lite-red;
+      }
+    }
+    
+    svg {
+      position: absolute;
+      fill: rgba(188, 66, 86, 0.6);
+    }
+  }
+}
