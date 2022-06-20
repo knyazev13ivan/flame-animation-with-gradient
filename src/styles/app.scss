@@ -7,7 +7,7 @@
   box-sizing: border-box;
   font-family: "Century Gothic", sans-serif;
 
-  // outline: 1px solid orangered; outline-offset: 1px;
+  background-color: $bg-color;
 }
 
 body #root {
@@ -18,10 +18,11 @@ body #root {
 
   height: 100vh;
 
+  min-width: 600px;
+
   font-size: 16px;
   line-height: 1.4em;
 
-  background-color: $bg-color;
   color: $text-color;
 
   a {
@@ -45,6 +46,30 @@ body #root {
     display: flex;
     justify-content: space-around;
 
+    @media screen and (max-width: 1310px) {
+      flex-direction: column;
+
+      font-size: 1.2em;
+
+      .gradient-description {
+        margin-bottom: 30px;
+        margin-left: 10px;
+
+        width: 360px!important;
+        
+        .color-change {
+          margin-bottom: 0px!important;
+        }
+      }
+      
+      .flame-description {
+        margin-top: 20px;
+        margin-left: 10px;
+
+        width: 460px!important;
+      }
+    }
+    
     .animation {
       display: flex;
       flex-direction: column;
